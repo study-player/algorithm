@@ -7,6 +7,7 @@
 
 #### 示例
 
+```
 .
 ├── LICENSE
 ├── README.md
@@ -14,6 +15,7 @@
     └── n-queens
         ├── n-queens-wu.js
         └── README.md
+```
 
 ### git 规范
 
