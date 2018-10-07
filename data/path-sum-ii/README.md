@@ -48,3 +48,7 @@ let generate_tree_node = (num) => {
 let num = [5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1];
 let root = generate_tree_node(num);
 ```
+
+## 输出示例
+
+[ [ 5, 4, 11, 2 ], [ 5, 8, 4, 5 ] ]
