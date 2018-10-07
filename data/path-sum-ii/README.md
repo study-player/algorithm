@@ -9,29 +9,42 @@
 ## 输入示例
 
 ```javascript
-class TreeNode {
-  construct(val) {
-    this.val = val;
-    this.left = this.right = null;
-  }
-}
-let num = [5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1];
-let rot = new TreeNode(num[0]);
-let list = [rot];
-let index = 1;
-while (list.length) {
-  let tmp = list.shift();
-  if (num[index] !== null && index < num.length) {
-    if (index % 2 !== 0) {
-      let _left = new TreeNode(num[index]);
-      tmp.left = _left;
-      list.push(_left);
-    } else {
-      let _right = new TreeNode(num[index]);
-      tmp.right = _right;
-      list.push(_right);
+let generate_tree_node = (num) => {
+  if (!Array.isArray(num)) return null;
+  class TreeNode {
+    constructor(val) {
+      this.val = val;
+      this.left = this.right = null;
     }
   }
+  let root = new TreeNode(num[0]);
+  let list = [root];
+  let index = 1;
+  while (list.length) {
+    let tmp = list.shift();
+    // 采取队列的数据结构生成二叉树
+    if (index < num.length) {
+      if (num[index] !== null) {
+        let _left = new TreeNode(num[index]);
+        tmp.left = _left;
+        list.push(_left);
+      } else {
+        tmp.left = null;
+      }
+      if (num[index + 1] !== null) {
+        let _right = new TreeNode(num[index + 1]);
+        tmp.right = _right;
+        list.push(_right);
+      } else {
+        tmp.right = null;
+      }
+    } else {
+      break;
+    }
+    index += 2;
+  }
+  return root;
 }
-console.log(rot);
+let num = [5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1];
+let root = generate_tree_node(num);
 ```
